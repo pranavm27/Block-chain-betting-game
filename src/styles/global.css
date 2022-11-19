@@ -1,0 +1,89 @@
+@tailwind base;
+
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap');
+
+body {
+  background-color: blue;
+  background-image: url("/assets/images/body-background.png");
+  font-family: 'Oxanium', cursive;
+  background-size: cover;
+}
+
+.header-card {
+  background: #670027;
+}
+
+.top-curve {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.bottom-curve {
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.bottom-left-curve {
+  border-bottom-left-radius: 50px;
+}
+
+.bottom-right-curve {
+  border-bottom-right-radius: 50px;
+}
+
+select {
+  appearance: none;
+  border: 0 !important;
+  background: #b4003a;
+  flex: 1;
+  padding: 0 0.5em;
+  color: #fbdf00;
+  cursor: pointer;
+  font-size: 1em;
+}
+select::-ms-expand {
+  display: none;
+}
+.select {
+  text-align-last:center;
+  font-family: 'Reem Kufi', sans-serif;
+  display: flex;
+  height: 3em;
+  background: #b4003a;
+  
+  overflow: hidden;
+  border-radius: .90em;
+}
+.select::after {
+  align:center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #2b2e2e;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+a {
+  @apply text-blue-700;
+}
+
+a:hover {
+  @apply border-b-2 border-blue-700;
+}
+
+@tailwind components;
+
+@tailwind utilities;
+
+.pl-20 {
+  padding-left: 6rem;
+}
+.content p {
+  @apply my-6;
+}
+
+.content ul {
+  @apply my-6;
+}
