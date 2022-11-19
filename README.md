@@ -1,8 +1,7 @@
 
-🚀 Collection of handy online tools for developers, with great UX.
+🚀 Betting game for world cup FIFA 2022 | uses web3Js to connect with block chain.
 
-
- Next.js, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, Jest, Testing Library, Commitlint, VSCode, Netlify, PostCSS, Tailwind CSS.
+⚡ Built with Next.js, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, Jest, Testing Library, Commitlint, VSCode, Netlify, PostCSS, Tailwind CSS.
 
 <!-- You can check  [Tool-kit](https://took-kit.netlify.app/). -->
 
@@ -131,4 +130,5 @@ See [LICENSE](LICENSE) for more information.
 
 ---
 
-Made with ♥ by [Pranav M](https://took-kit.netlify.app/about/)
+Made with ♥ by [Pranav M]
+<!-- (https://took-kit.netlify.app/about/) -->
