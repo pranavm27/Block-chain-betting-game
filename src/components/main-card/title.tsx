@@ -1,4 +1,4 @@
-function Title(props: {status: boolean}) {
+function Title(props: { status: boolean }) {
   return (
     <>
       <div
@@ -9,13 +9,18 @@ function Title(props: {status: boolean}) {
             text-xl
             font-bold tracking-tight
            text-white"
-          //  style={{ minWidth: '50rem', maxWidth: '50rem'}}
-
->
+        //  style={{ minWidth: '50rem', maxWidth: '50rem'}}
+      >
         <div className="ml-5">
-        {props.status !== false ? 
-        <h1>CURRENT STATUS: TEAMS, TICKETS, WIN$ PER TICKET</h1>
-        : ""}
+          {props.status !== false ? (
+            <div className="">
+              <h1 className="">
+                CURRENT STATUS: TEAMS, TICKETS, WIN$ PER TICKET
+              </h1>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

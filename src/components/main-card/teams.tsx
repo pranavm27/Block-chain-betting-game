@@ -14,10 +14,10 @@ function Teams(props: { allTeams: any }) {
             sm:rounded-b md:rounded-none lg:rounded-bl-3xl xl:rounded-bl-3xl
 
             "
-            style={{ minHeight: "35rem" }}
+            style={{ minHeight: "40rem" }}
             >
         <div className="grid grid-cols-2 ">
-          {TEAMS.map((item) => {
+          {TEAMS.map((item: any) => {
             return (
               <div className="grid grid-cols-2 gap-3 ">
                 <label className="">{item?.team}</label>

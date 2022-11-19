@@ -1,9 +1,9 @@
-import { NUMBER_BASE } from "@/config/config";
-import { useEffect } from "react";
+import { NUMBER_BASE, TOKEN_NAME, DOCS } from "@/config/config";
 import useMetaMask from "../../hooks/useMeta";
 
+
 function Header() {
-  const { connect, disconnect, isActive, account, shouldDisable } =
+  const { connect, isActive, account } =
     useMetaMask();
   const { ticketPrice, totalPool, fees } = useMetaMask();
 
@@ -34,7 +34,7 @@ function Header() {
                 className=" text-center   text-4xl font-bold text-gray-400"
                 style={{ color: "#00cf00" }}
               >
-                {ticketPrice / NUMBER_BASE || 0}
+                {ticketPrice / NUMBER_BASE || 0} {TOKEN_NAME}
               </p>
             </div>
 
@@ -46,7 +46,7 @@ function Header() {
                 className=" text-center   text-4xl font-bold text-gray-400"
                 style={{ color: "#fbdf00" }}
               >
-                {totalPool}
+                {totalPool} {TOKEN_NAME}
               </p>
             </div>
 
@@ -58,7 +58,7 @@ function Header() {
                 className=" text-center   text-4xl font-bold text-gray-400"
                 style={{ color: "#00d500" }}
               >
-                {fees}
+                {fees} %
               </p>
             </div>
           </div>
@@ -70,6 +70,18 @@ function Header() {
         </div>
 
         <div className="flex-auto  	">
+        <a
+            className="p-2  mt-5 ml-5 font-bold lg:mt-14 float-right "
+            style={{
+              color: "#fff",
+              backgroundColor: "#ea5729",
+            }}
+            target="_new"
+            href=" https://basedfinance.gitbook.io/based-finance-v2/"
+            >
+            DOCS
+          </a>
+
           <button
             className="p-2 font-bold lg:mt-14 float-right "
             style={{
@@ -77,10 +89,12 @@ function Header() {
               backgroundColor: "#ea5729",
             }}
             onClick={connect}
-            disabled={shouldDisable}
           >
             {isActive ? account : "connect to metamask"}
           </button>
+
+          
+
 
           <div className="mt-2 mb-2"></div>
           {/* <button
@@ -93,7 +107,7 @@ function Header() {
             disabled={shouldDisable}
           >
             DOCS
-          </button> */}
+          </a>
 
           {/* <button onClick={disconnect}>Disconnect MetaMask</button> */}
         </div>

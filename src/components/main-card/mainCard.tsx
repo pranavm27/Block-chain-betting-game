@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import Title from "./title";
 import Teams from "./teams";
 import Tickets from "./tickets";

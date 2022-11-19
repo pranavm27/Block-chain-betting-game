@@ -1,15 +1,15 @@
 import useMetaMask from "@/hooks/useMeta";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
-import Web3 from "web3";
+// import Web3 from "web3";
 
 // create a web3 instance using a browser wallet or any another provider
-const web3 = new Web3(Web3?.givenProviderp);
+// const web3 = new Web3(Web3?.givenProviderp);
 
-const getNetworkId = async () => {
-  const currentChainId = await web3.eth.net.getId();
-  return currentChainId;
-};
+// const getNetworkId = async () => {
+//   const currentChainId = await web3.eth.net.getId();
+//   return currentChainId;
+// };
 
 function Tickets() {
   const {
@@ -20,20 +20,17 @@ function Tickets() {
     hasGameEnded,
     winningsForWallet,
     isSleeping,
-    hasFeesWithdrawn,
     functionCollectWinnings,
     hasWalletWithdrawn,
     hasBet,
   } = useMetaMask();
   const country = allTeams;
-  const noOfTickets = [...new Array(101)].map((each, index) => {
-    return index + 1;
-  });
+  const noOfTickets = [1, 2, 4, 5, 6, 7, 8, 9, 10];
 
   const collectWinnings = async () => {
-    if (!hasGameEnded || hasFeesWithdrawn) return;
+    if (!hasGameEnded || hasWalletWithdrawn) return;
 
-    const result = await functionCollectWinnings();
+    await functionCollectWinnings();
   };
 
   const buyTicket = async () => {
@@ -46,6 +43,8 @@ function Tickets() {
         selectedTeam.current,
         noOfTicketsSelected.current
       );
+
+      if (result) window.location.reload();
       // alert(result);
       return;
     }
@@ -56,27 +55,34 @@ function Tickets() {
 
   return (
     <>
-      {hasGameEnded == false ? 
-      (
+      {hasGameEnded == false ? (
         <div
           className="
             header-card
             // p-7
             text-center
             font-bold tracking-tight  text-white
-            sm:rounded-b md:rounded-none lg:rounded-r-2xl xl:rounded-r-2xl
+            sm:rounded-b md:rounded-none lg:rounded-br-2xl xl:rounded-br-2xl
             "
-
-          style={{ minHeight: "35rem" }}
+          style={{ minHeight: "40rem" }}
         >
-          {teamForWallet?.length > 0 ? (
-            <p className="text-2xl m-10"> YOU HAVE BET ON</p>
+          {isSleeping ? (
+            <label className=" text-4xl" style={{ color: "#fbdf00" }}>
+              {" "}
+              BETTING IS PAUSED{" "}
+            </label>
           ) : (
-            <p className="text-3xl m-10">BUY TICKETS TO BET </p>
+            ""
+          )}
+
+          {hasBet ? (
+            <p className="text-2xl "> YOU HAVE BET ON</p>
+          ) : (
+            <p className="text-3xl ">BUY TICKETS TO BET </p>
           )}
 
           <div className="">
-            {teamForWallet?.length > 0 ? (
+            {hasBet > 0 ? (
               <div className="select text-2xl align-middle justify-center mt-14">
                 <p
                   className="text-center align-middle justify-center pt-3 "
@@ -94,7 +100,7 @@ function Tickets() {
                     name="format"
                     id="format"
                     onChange={(e) => {
-                      selectedTeam.current = e.target.value;
+                      selectedTeam.current = parseInt(e.target.value);
                     }}
                   >
                     <option selected disabled value={-1}>
@@ -110,7 +116,7 @@ function Tickets() {
           </div>
 
           <div className="m-5">
-            {teamForWallet?.length > 0 ? (
+            {hasBet ? (
               <>
                 <p className="text-2xl mt-16 mb-5 "> YOUR TICKETS </p>
                 <div className="select text-2xl align-middle justify-center ">
@@ -133,7 +139,7 @@ function Tickets() {
                     id="format"
                     style={{ color: "#00c300" }}
                     onChange={(e) => {
-                      noOfTicketsSelected.current = e.target.value;
+                      noOfTicketsSelected.current = parseInt(e.target.value);
                     }}
                   >
                     {noOfTickets.map((item) => {
@@ -158,21 +164,6 @@ function Tickets() {
                     BUY
                   </p>
                 </button>
-
-                {isSleeping ? (
-                  <>
-                    <div className="select text-2xl align-middle justify-center mt-14">
-                      <p
-                        className="text-center align-middle justify-center pt-3 "
-                        style={{ color: "#fbdf00" }}
-                      >
-                        BETTING IS PAUSED
-                      </p>
-                    </div>
-                  </>
-                ) : (
-                  <></>
-                )}
               </>
             )}
           </div>
@@ -185,17 +176,22 @@ function Tickets() {
             pr-7
             text-center
             font-bold tracking-tight  text-white
-            sm:rounded-br-3xl md:rounded-none lg:rounded-br-3xl xl:rounded-br-3xl"
-          style={{ minHeight: "35rem" }}
+            sm:rounded-br-3xl md:rounded-none lg:rounded-br-3xl xl:rounded-br-3xl
+            "
+          style={{ minHeight: "40rem" }}
         >
-          <p className="text-2xl " style={{ color: "#00d500" }}> BETTING HAS ENDED</p> {}
-          <p className="text-2xl ">  
-          {hasBet === true && winningsForWallet <= 0 ? "YOUR TEAM DID NOT WIN!" : ""}
-          {hasBet === true && winningsForWallet > 0 ? "YOUR TEAM  WON!" : ""}
-          {hasBet === false ? "YOU MISSED OUT !" : ""}
-
+          <p className="text-3xl pt-10" style={{ color: "#00d500" }}>
+            {" "}
+            BETTING HAS ENDED
+          </p>{" "}
+          {}
+          <p className="text-3xl ">
+            {hasBet === true && winningsForWallet <= 0
+              ? "YOUR TEAM DID NOT WIN!"
+              : ""}
+            {hasBet === true && winningsForWallet > 0 ? "YOUR TEAM  WON!" : ""}
+            {hasBet === false ? "YOU MISSED OUT !" : ""}
           </p>
-
           <div className="">
             {hasBet && teamForWallet?.length > 0 ? (
               <div className="select text-2xl align-middle justify-center ">
@@ -210,7 +206,6 @@ function Tickets() {
               ""
             )}
           </div>
-
           <div className="m-5">
             {hasBet && teamForWallet?.length > 0 ? (
               <>
@@ -229,37 +224,50 @@ function Tickets() {
               ""
             )}
           </div>
+          {hasBet ? (
+            <>
+              <p className="text-2xl  "> WINNINGS </p>
+              <div className="select text-2xl align-middle justify-center ">
+                <p
+                  className="text-center align-middle justify-center pt-3 "
+                  style={{ color: "#fbdf00" }}
+                >
+                  {winningsForWallet}
+                </p>
+              </div>
 
-          {hasBet ? <>
-            <p className="text-2xl  "> WINNINGS</p>
-          <div className="select text-2xl align-middle justify-center ">
-            <p
-              className="text-center align-middle justify-center pt-3 "
-              style={{ color: "#fbdf00" }}
-            >
-              {winningsForWallet}
-            </p>
-          </div>
-
-          <button
-            className="p-2 m-9"
-            disabled={hasWalletWithdrawn}
-            style={{
-              color: "#fff",
-              backgroundColor: "#ea5729",
-              width: "10em",
-              borderRadius: "12px",
-            }}
-          >
-            <p className="text-2xl" onClick={() => collectWinnings()}>
-              COLLECT
-            </p>
-          </button>
-          </>: ""}
-          </div>
+              {hasBet === true && hasWalletWithdrawn && winningsForWallet > 0 && (
+                <div className="select text-2xl align-middle justify-center mt-10 ">
+                  <p
+                    className="text-center align-middle justify-center pt-3 "
+                    style={{ color: "#00d500" }}
+                  >
+                    {" Winning Withdrawn!"}
+                  </p>
+                </div>
+              )}
+              {hasBet === true && winningsForWallet > 0 && !hasWalletWithdrawn && (
+                <button
+                  className="p-2 m-9"
+                  disabled={hasWalletWithdrawn}
+                  style={{
+                    color: "#fff",
+                    backgroundColor: "#ea5729",
+                    width: "10em",
+                    borderRadius: "12px",
+                  }}
+                >
+                  <p className="text-2xl" onClick={() => collectWinnings()}>
+                    COLLECT
+                  </p>
+                </button>
+              )}
+            </>
+          ) : (
+            ""
+          )}
+        </div>
       )}
-
-
     </>
   );
 }
