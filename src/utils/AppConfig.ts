@@ -1,6 +1,6 @@
 export const AppConfig = {
-  site_name: 'toolkit.com',
+  site_name: 'Betting Game',
   title: 'World Cup Betting',
-  description: 'Handy Tool-kit that is needed by all developers',
+  description: 'Betting game for FIFA 2022 world cup',
   locale: 'en',
 };
