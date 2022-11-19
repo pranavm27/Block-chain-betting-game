@@ -166,9 +166,9 @@ export const MetaMaskProvider = ({ children }: any) => {
       console.log(MIN_ABI)
       let contract = new web3.eth.Contract(MIN_ABI, tokenAddress);
 
-      // call transfer function
+       // call transfer function
       await contract.methods
-        .approve(WORLD_CUP_ADDRESS, BigNumber(MAX_APPROVAL_AMOUNT))
+        .approve(WORLD_CUP_ADDRESS, (MAX_APPROVAL_AMOUNT))
         .send({ from: fromAddress })
         .on("transactionHash", function (hash: any) {
           console.log(hash);
