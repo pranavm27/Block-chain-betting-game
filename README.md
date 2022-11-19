@@ -130,5 +130,4 @@ See [LICENSE](LICENSE) for more information.
 
 ---
 
-Made with ♥ by [Pranav M]
-<!-- (https://took-kit.netlify.app/about/) -->
+Made with ♥ by [Pranav M] (https://www.linkedin.com/in/pranavmanmadhan/)
