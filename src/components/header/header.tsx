@@ -9,10 +9,33 @@ function Header() {
 
   return (
     <>
-      <div className="flex flex-wrap justify-between">
-        <div className="flex-auto">
-          <img className="" src="/assets/images/worldcup_logo.png" />
+      <div className="lg:flex md:flex-none flex-wrap flex-row-reverse ">
+      <div className="basis-1/4  	">
+        <a
+            className="p-2  mt-5 ml-5 font-bold lg:mt-14 mb-14 "
+            style={{
+              color: "#fff",
+              backgroundColor: "#00cf00",
+            }}
+            target="_new"
+            href=" https://basedfinance.gitbook.io/based-finance-v2/"
+            >
+            DOCS
+          </a>
+<br/>
+          <button
+            className="p-2 font-bold mt-14 truncate "
+            style={{
+              color: "#fff",
+              backgroundColor: "#ea5729",
+              width: '15rem'
+            }}
+            onClick={connect}
+          >
+            {isActive ? account : "connect to metamask"}
+          </button>
         </div>
+        
 
         <div
           className="
@@ -23,7 +46,7 @@ function Header() {
                 mb-5
                 p-3 
                  md:h-32 lg:h-32
-                flex-auto"
+                 basis-3/6"
         >
           <div className=" flex flex-wrap ">
             <div className="flex-auto">
@@ -69,47 +92,9 @@ function Header() {
           </div>
         </div>
 
-        <div className="flex-auto  	">
-        <a
-            className="p-2  mt-5 ml-5 font-bold lg:mt-14 float-right "
-            style={{
-              color: "#fff",
-              backgroundColor: "#ea5729",
-            }}
-            target="_new"
-            href=" https://basedfinance.gitbook.io/based-finance-v2/"
-            >
-            DOCS
-          </a>
-
-          <button
-            className="p-2 font-bold lg:mt-14 float-right "
-            style={{
-              color: "#fff",
-              backgroundColor: "#ea5729",
-            }}
-            onClick={connect}
-          >
-            {isActive ? account : "connect to metamask"}
-          </button>
-
-          
-
-
-          <div className="mt-2 mb-2"></div>
-          {/* <button
-            className="p-2 font-bold"
-            style={{
-              color: "#fff",
-              backgroundColor: "#ea5729",
-            }}
-            onClick={connect}
-            disabled={shouldDisable}
-          >
-            DOCS
-          </a>
-
-          {/* <button onClick={disconnect}>Disconnect MetaMask</button> */}
+        
+        <div className=" basis-1/4">
+          <img className=" hidden md:block" src="/assets/images/worldcup_logo.png" />
         </div>
       </div>
     </>

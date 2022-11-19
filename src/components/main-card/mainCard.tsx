@@ -11,10 +11,10 @@ function Card() {
     <>
       <div className="mt-30">
         <div
-          className=" md:w-77 lg:w-8/12  sm:w-8/12 "
+          className=" md:w-8/12 lg:w-10/12  sm:w-10/12 "
           style={{ margin: "auto", padding: "10px" }}
         >
-          <div className="flex  flex-wrap">
+          <div className="flex  flex-wrap ">
             <div className="flex-auto ">
               <Title status={true}></Title>
             </div>
@@ -22,7 +22,7 @@ function Card() {
               <Title status={false}></Title>
             </div> */}
           </div>
-          <div className="flex  flex-wrap ">
+          <div className="flex  flex-wrap flex-wrap-reverse ">
             <div className="flex-auto ">
               <Teams allTeams={allTicketForTeam}></Teams>
             </div>
