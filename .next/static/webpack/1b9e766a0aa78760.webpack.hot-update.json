@@ -1,1 +1,0 @@
-{"c":["pages/_app","webpack"],"r":[],"m":["./node_modules/@web3-react/abstract-connector/dist/abstract-connector.esm.js","./node_modules/@web3-react/injected-connector/dist/injected-connector.esm.js","./node_modules/next/dist/compiled/events/events.js","./src/components/wallet/connectors.tsx"]}
