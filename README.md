@@ -4,7 +4,7 @@
 
  Next.js, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, Jest, Testing Library, Commitlint, VSCode, Netlify, PostCSS, Tailwind CSS.
 
-You can check  [Tool-kit](https://took-kit.netlify.app/).
+<!-- You can check  [Tool-kit](https://took-kit.netlify.app/). -->
 
 ### Features
 
@@ -49,7 +49,7 @@ Built-in feature from Next.js:
 Run the following command on your local environment:
 
 ```shell
-git clone --depth=1 https://github.com/pranavm27/Tool-kit.git my-project-name
+git clone --depth=1 https://github.com/pranavm27/Block-chain-betting-game.git my-project-name
 cd my-project-name
 npm install
 ```
