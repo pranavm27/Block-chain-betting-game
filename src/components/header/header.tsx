@@ -9,7 +9,7 @@ function Header() {
     <>
       <div className="lg:flex md:flex-none flex-wrap flex-row-reverse ">
         <div className="basis-1/4  	">
-          <div className="flex">
+         
           <a
             className="  flex-auto p-2  mt-5 ml-5 font-bold lg:mt-14 mb-14 "
             style={{
@@ -21,6 +21,8 @@ function Header() {
           >
             DOCS
           </a>
+
+
           <a
             className="p-2  mt-5 mr-25 font-bold lg:mt-14 mb-14 "
             
@@ -28,15 +30,18 @@ function Header() {
             href="https://twitter.com/oddsonchain"
           >
             <img
-              style={{  width: "15%"  }}
+              style={{  "width": '9%',
+                "float": "right",
+                "marginRight": "24%",
+                "top": "0",
+                "marginTop": "1%"  }}
               className=" "
               src="/assets/images/twitter.png"
             />
           </a>
-          </div>
-    
+    <br/>
           <button
-            className="p-2 font-bold  truncate "
+            className="p-2 font-bold mt-4  truncate "
             style={{
               color: "#fff",
               backgroundColor: "#ea5729",
