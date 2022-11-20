@@ -25,7 +25,7 @@ function Header() {
             className="p-2  mt-5 mr-25 font-bold lg:mt-14 mb-14 "
             
             target="_new"
-            href="https://gotham-chainworks-llc.gitbook.io/oddsonchainprotocol/"
+            href="https://twitter.com/oddsonchain"
           >
             <img
               style={{  width: "15%"  }}
