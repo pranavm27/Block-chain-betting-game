@@ -9,7 +9,6 @@ function Header() {
     <>
       <div className="lg:flex md:flex-none flex-wrap flex-row-reverse ">
         <div className="basis-1/4  	">
-         
           <a
             className="  flex-auto p-2  mt-5  font-bold lg:mt-14 mb-14 "
             style={{
@@ -21,25 +20,24 @@ function Header() {
           >
             DOCS
           </a>
-
-
           <a
             className="p-2  mt-5 mr-25 font-bold lg:mt-14 mb-14 "
-            
             target="_new"
             href="https://twitter.com/oddsonchain"
           >
             <img
-              style={{  "width": '9%',
-                "float": "right",
-                "marginRight": "24%",
-                "top": "0",
-                "marginTop": "1%"  }}
+              style={{
+                width: "9%",
+                float: "right",
+                marginRight: "24%",
+                top: "0",
+                marginTop: "1%",
+              }}
               className=" "
               src="/assets/images/twitter.png"
             />
           </a>
-    <br/>
+          <br />
           <button
             className="p-2 font-bold mt-4  truncate "
             style={{
@@ -101,16 +99,12 @@ function Header() {
               </p>
             </div>
           </div>
-          <div className="mt-16">
-            <h1 className=" text-4xl text-center font-bold tracking-tight text-white">
-              {"Buy tickets to bet on your team to win a share of the pot!"}
-            </h1>
-          </div>
         </div>
+
+       
 
         <div className=" basis-1/4">
           <div className="flex  flex-wrap m-2">
-            
             <img
               className=" hidden md:block flex-auto mt-10"
               style={{ width: "15%", height: "30%" }}
