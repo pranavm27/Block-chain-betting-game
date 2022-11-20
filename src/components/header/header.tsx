@@ -1,41 +1,53 @@
 import { NUMBER_BASE, TOKEN_NAME, DOCS } from "@/config/config";
 import useMetaMask from "../../hooks/useMeta";
 
-
 function Header() {
-  const { connect, isActive, account } =
-    useMetaMask();
+  const { connect, isActive, account } = useMetaMask();
   const { ticketPrice, totalPool, fees } = useMetaMask();
 
   return (
     <>
       <div className="lg:flex md:flex-none flex-wrap flex-row-reverse ">
-      <div className="basis-1/4  	">
-        <a
-            className="p-2  mt-5 ml-5 font-bold lg:mt-14 mb-14 "
+        <div className="basis-1/4  	">
+          <div className="flex-wrap flex-row-reverse">
+          <a
+            className="  flex-auto p-2  mt-5 ml-5 font-bold lg:mt-14 mb-14 "
             style={{
               color: "#fff",
               backgroundColor: "#00cf00",
             }}
             target="_new"
-            href=" https://basedfinance.gitbook.io/based-finance-v2/"
-            >
+            href="https://gotham-chainworks-llc.gitbook.io/oddsonchainprotocol/"
+          >
             DOCS
           </a>
-<br/>
+          <a
+            className="p-2  mt-5 mr-25 font-bold lg:mt-14 mb-14 "
+            
+            target="_new"
+            href="https://gotham-chainworks-llc.gitbook.io/oddsonchainprotocol/"
+          >
+            <img
+              style={{ float:"right", width: "10%", height: "10%" }}
+              className=" "
+              src="/assets/images/twitter.png"
+            />
+          </a>
+          </div>
+    
+          <br />
           <button
             className="p-2 font-bold mt-14 truncate "
             style={{
               color: "#fff",
               backgroundColor: "#ea5729",
-              width: '15rem'
+              width: "15rem",
             }}
             onClick={connect}
           >
             {isActive ? account : "connect to metamask"}
           </button>
         </div>
-        
 
         <div
           className="
@@ -92,9 +104,19 @@ function Header() {
           </div>
         </div>
 
-        
         <div className=" basis-1/4">
-          <img className=" hidden md:block" src="/assets/images/worldcup_logo.png" />
+          <div className="flex flex flex-wrap m-2">
+            <img
+              className=" hidden md:block flex-auto"
+              style={{ width: "15%", height: "30%" }}
+              src="/assets/images/logo.png"
+            />
+            <img
+              style={{ width: "30%", height: "30%" }}
+              className=" hidden md:block flex-auto"
+              src="/assets/images/worldcup_logo.png"
+            />
+          </div>
         </div>
       </div>
     </>

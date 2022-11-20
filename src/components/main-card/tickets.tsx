@@ -1,5 +1,5 @@
 import useMetaMask from "@/hooks/useMeta";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 // import Web3 from "web3";
 
@@ -24,6 +24,8 @@ function Tickets() {
     hasWalletWithdrawn,
     hasBet,
   } = useMetaMask();
+
+  const [block , setBlock] = useState(false);
   const country = allTeams;
   const noOfTickets = [1, 2, 4, 5, 6, 7, 8, 9, 10];
 
@@ -39,13 +41,13 @@ function Tickets() {
       alert("No Team Selected ");
       return;
     } else {
+      setBlock(true)
       const result = await makeSignedTransaction(
         selectedTeam.current,
         noOfTicketsSelected.current
       );
 
       if (result) window.location.reload();
-      // alert(result);
       return;
     }
   };
@@ -152,7 +154,7 @@ function Tickets() {
 
                 <button
                   className="p-2 m-9"
-                  disabled={isSleeping || hasGameEnded}
+                  disabled={isSleeping || hasGameEnded || block}
                   style={{
                     color: "#fff",
                     backgroundColor: "#ea5729",
