@@ -76,11 +76,14 @@ export const MetaMaskProvider = ({ children }: any) => {
   // Init Loading
   useEffect(() => {
     connect().then(() => {
-      refreshData();
       initialFunctionCall();
+      refreshData();
     });
-  }, [account]);
+  }, []);
 
+  useEffect(() => {
+    initialFunctionCall()
+  }, [account]);
   const refreshData = () => {
     setInterval(() => {
       functionGetTotalPool();
@@ -104,12 +107,12 @@ export const MetaMaskProvider = ({ children }: any) => {
 
   useEffect(() => {
     if (hasBet) {
-      functionHasWalletWithdrawn();
-      functionHasFeesWithdrawn();
-      functionGetTeamIdForWallet();
+      functionGetTicketsForWallet();
       functionGetTeamForWallet();
       functionGetWinningsForWallet();
-      functionGetTicketsForWallet();
+      functionGetTeamIdForWallet();
+      functionHasWalletWithdrawn();
+      functionHasFeesWithdrawn();
     }
   }, [hasBet]);
 
@@ -133,39 +136,15 @@ export const MetaMaskProvider = ({ children }: any) => {
     // checkAllowance()
   };
 
-  useEffect(() => {
-    async function listenMMAccount() {
-      const web3 = new Web3(Web3.givenProvider);
-
-      var options = {
-        address: "CONTRACT",
-        topics: ["TOPIC0"],
-      };
-      var subscription = web3.eth
-        .subscribe("logs", {}, function (error, result) {
-          if (!error) console.log("got result");
-          else console.log(error);
-        })
-        .on("data", function (log) {
-          console.log("got data....", log);
-        })
-        .on("changed", function (log) {
-          console.log("changed....");
-        });
-    }
-    listenMMAccount();
-  }, []);
 
   const switchNetWrok = async () => {
     const web3 = new Web3(Web3.givenProvider);
 
-    console.log("in swithc network");
     const data = await window.ethereum.request({
       method: "wallet_switchEthereumChain",
       params: [{ chainId: web3.utils.toHex("80001") }],
     });
 
-    console.log("switch network");
     return data;
   };
 
@@ -305,6 +284,12 @@ export const MetaMaskProvider = ({ children }: any) => {
       const data = await apiMethods.methods.hasBet(account).call();
       console.log("hasbet..", data);
       setHasBet(data);
+      functionGetTicketsForWallet();
+      functionGetTeamForWallet();
+      functionGetWinningsForWallet();
+      functionGetTeamIdForWallet();
+      functionHasWalletWithdrawn();
+      functionHasFeesWithdrawn();
     } catch (error) {
       console.error(error);
     }
@@ -329,7 +314,6 @@ export const MetaMaskProvider = ({ children }: any) => {
       await web3.eth.getAccounts();
       let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.isSleeping().call();
-      console.log("is sleeing ", data);
       setIsSleeping(data);
     } catch (error) {
       console.error(error);
@@ -370,12 +354,8 @@ export const MetaMaskProvider = ({ children }: any) => {
         WORLD_CUP_ADDRESS
       );
       let data = await apiMethods.methods.getTotalPool().call();
-      console.log("first data ", data);
       // let data1 = BigNumber(data).multiply(BigNumber(10).pow(DECIMAL)).toNumber() ;
       data = data / Math.pow(10, DECIMAL);
-
-      console.log("data", data);
-      console.log("data1", data);
 
       setTotalPool(data);
     } catch (error) {
