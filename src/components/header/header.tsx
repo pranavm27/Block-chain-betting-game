@@ -11,7 +11,7 @@ function Header() {
         <div className="basis-1/4  	">
          
           <a
-            className="  flex-auto p-2  mt-5 ml-5 font-bold lg:mt-14 mb-14 "
+            className="  flex-auto p-2  mt-5  font-bold lg:mt-14 mb-14 "
             style={{
               color: "#fff",
               backgroundColor: "#00cf00",
@@ -109,15 +109,16 @@ function Header() {
         </div>
 
         <div className=" basis-1/4">
-          <div className="flex flex flex-wrap m-2">
+          <div className="flex  flex-wrap m-2">
+            
             <img
-              className=" hidden md:block flex-auto"
+              className=" hidden md:block flex-auto mt-10"
               style={{ width: "15%", height: "30%" }}
               src="/assets/images/logo.png"
             />
             <img
               style={{ width: "30%", height: "30%" }}
-              className=" hidden md:block flex-auto"
+              className=" hidden md:block flex-auto "
               src="/assets/images/worldcup_logo.png"
             />
           </div>

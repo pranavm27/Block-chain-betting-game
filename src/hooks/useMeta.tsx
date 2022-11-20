@@ -423,7 +423,7 @@ export const MetaMaskProvider = ({ children }: any) => {
       const web3 = new Web3(Web3.givenProvider);
       let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.getTicketsForWallet(account).call();
-      console.log("get tickkets for walllet ", data);
+      console.log("get tickkets for walllet ", data, account);
       setTicketsForWallet(data);
     } catch (error) {
       console.error(error);
