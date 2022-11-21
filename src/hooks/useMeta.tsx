@@ -150,6 +150,7 @@ export const MetaMaskProvider = ({ children }: any) => {
         params: [{ chainId: web3.utils.toHex(CHAIN_ID) }],
       });
       console.log("........", data);
+      initialFunctionCall()
       return data;
     } catch (error) {
       console.log("2424324...", error);
