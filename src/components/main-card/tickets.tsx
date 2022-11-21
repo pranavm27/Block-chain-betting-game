@@ -66,7 +66,7 @@ function Tickets() {
             font-bold tracking-tight  text-white
             sm:rounded-b md:rounded-none lg:rounded-br-2xl xl:rounded-br-2xl
             "
-          style={{ minHeight: "40rem" }}
+          style={{ minHeight: "43rem" }}
         >
           {isSleeping ? (
             <label className=" text-4xl" style={{ color: "#fbdf00" }}>
