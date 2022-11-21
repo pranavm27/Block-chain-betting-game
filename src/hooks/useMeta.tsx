@@ -11,6 +11,11 @@ import {
   WORLD_CUP_ADDRESS,
   MAX_APPROVAL_AMOUNT,
   MIN_ABI,
+  BLOCKS_EXPORT_URLS,
+  CHAIN_ID,
+  CHAIN_NAME,
+  CURRENCY_SYMBOL,
+  RPC_URLS,
 } from "../config/config";
 var BigNumber = require("big-number");
 
@@ -138,15 +143,44 @@ export const MetaMaskProvider = ({ children }: any) => {
 
 
   const switchNetWrok = async () => {
-    const web3 = new Web3(Web3.givenProvider);
-
-    const data = await window.ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: [{ chainId: web3.utils.toHex("80001") }],
-    });
-
-    return data;
+    try {
+      const web3 = new Web3(Web3.givenProvider);
+      const data = await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: web3.utils.toHex(CHAIN_ID) }],
+      });
+      console.log("........", data);
+      return data;
+    } catch (error) {
+      console.log("2424324...", error);
+      if (error.code === 4902) {
+        addWallet();
+      }
+    }
   };
+
+  const addWallet = async () => {
+    try {
+      const web3 = new Web3(Web3.givenProvider);
+      const chainData = [{
+        chainId: web3.utils.toHex(CHAIN_ID),
+        chainName: CHAIN_NAME,
+        nativeCurrency: { name: CHAIN_NAME, symbol: CURRENCY_SYMBOL, decimals: DECIMAL },
+        rpcUrls: RPC_URLS,
+        blockExplorerUrls: BLOCKS_EXPORT_URLS,
+    }];
+
+      const data = await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: chainData,
+      });
+      switchNetWrok();
+      return data;
+    } catch (error) {
+      console.log(".......", error);
+    }
+  };
+
 
   // get approval to send token
   const functionGetApproval = async () => {
@@ -253,6 +287,7 @@ export const MetaMaskProvider = ({ children }: any) => {
     }
   };
 
+  
   // Disconnect from Metamask wallet
   const disconnect = async () => {
     try {
