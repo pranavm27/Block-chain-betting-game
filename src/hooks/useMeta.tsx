@@ -481,7 +481,8 @@ export const MetaMaskProvider = ({ children }: any) => {
         };
         allTeamsTicketData.push(json);
       }
-      setAllTicketForTeam(allTeamsTicketData);
+      if(allTeamsTicketData.length > 0)
+        setAllTicketForTeam(allTeamsTicketData);
     } catch (error) {
       console.log(error);
     }
