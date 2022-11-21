@@ -96,7 +96,7 @@ export const MetaMaskProvider = ({ children }: any) => {
       functionIsSleeping();
       functionGetAllTicketForTeam();
       functionHasGameEnded();
-    }, 5 * 60 * 1000); //every minute
+    },  1000); //every minute
   };
 
   const handleIsActive = useCallback(() => {
