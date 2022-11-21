@@ -12,7 +12,10 @@ export const TOKEN_NAME= configJson.tokenName;
 export const GOAT_TOKEN_ADDRESS = configJson.tokenAddress;
 
 // DOCS LINK 
-export const DOCS="https://basedfinance.gitbook.io/based-finance-v2/";
+export const DOCS=configJson.docsLink;
+
+// twitter LINK 
+export const TWITTER =configJson.twitterLink;
 
 // maximum value for approval amount
 export const MAX_APPROVAL_AMOUNT = configJson.maxApprovalAmount;

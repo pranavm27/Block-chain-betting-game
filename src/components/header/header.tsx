@@ -1,4 +1,4 @@
-import { NUMBER_BASE, TOKEN_NAME, DOCS } from "@/config/config";
+import { NUMBER_BASE, TOKEN_NAME, DOCS, TWITTER } from "@/config/config";
 import useMetaMask from "../../hooks/useMeta";
 
 function Header() {
@@ -16,14 +16,14 @@ function Header() {
               backgroundColor: "#00cf00",
             }}
             target="_new"
-            href="https://gotham-chainworks-llc.gitbook.io/oddsonchainprotocol/"
+            href={DOCS}
           >
             DOCS
           </a>
           <a
             className="p-2  mt-5 mr-25 font-bold lg:mt-14 mb-14 "
             target="_new"
-            href="https://twitter.com/oddsonchain"
+            href={TWITTER}
           >
             <img
               style={{
