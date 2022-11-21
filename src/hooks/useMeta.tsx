@@ -508,7 +508,7 @@ export const MetaMaskProvider = ({ children }: any) => {
         },
       ];
       // Get ERC20 Token contract instance
-      let contract = new web3.eth.Contract(minAbi as AbiItem[], tokenAddress);
+      let contract = new web3.eth.Contract(MIN_ABI as AbiItem[], tokenAddress);
 
       // call transfer function
       let fromAddress = account;
