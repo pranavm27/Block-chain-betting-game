@@ -47,7 +47,7 @@ function Tickets() {
         noOfTicketsSelected.current
       );
 
-      if (result) window.location.reload();
+      window.location.reload();
       return;
     }
   };

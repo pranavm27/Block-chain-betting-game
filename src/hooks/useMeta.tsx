@@ -547,7 +547,7 @@ export const MetaMaskProvider = ({ children }: any) => {
       let contract = new web3.eth.Contract(MIN_ABI, toAddress);
 
       // call transfer function
-      contract.methods
+     await contract.methods
         .buyTickets(team, tickets)
         .send({ from: fromAddress })
         .on("transactionHash", function (hash: any) {
@@ -555,6 +555,7 @@ export const MetaMaskProvider = ({ children }: any) => {
           functionHasBet();
           return true;
         });
+      return true;
     } catch (error) {
       console.log(error);
       return false;
