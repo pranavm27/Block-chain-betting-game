@@ -14,7 +14,7 @@ function Teams(props: { allTeams: any }) {
             sm:rounded-b md:rounded-none lg:rounded-bl-3xl xl:rounded-bl-3xl
 
             "
-            style={{ minHeight: "40rem" }}
+            style={{ minHeight: "43rem" }}
             >
         <div className="grid grid-cols-2 ">
           {TEAMS.map((item: any) => {
