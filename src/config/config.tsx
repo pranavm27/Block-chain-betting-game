@@ -17,6 +17,9 @@ export const DOCS=configJson.docsLink;
 // twitter LINK 
 export const TWITTER =configJson.twitterLink;
 
+// twitter LINK 
+export const CHAIN_ID =configJson.chainId;
+
 // maximum value for approval amount
 export const MAX_APPROVAL_AMOUNT = configJson.maxApprovalAmount;
 
