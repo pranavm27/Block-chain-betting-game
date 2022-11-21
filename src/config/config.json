@@ -1,6 +1,10 @@
 {
     "contractAddress" : "0x797111129d5b5c3372bcda5092e3e9480c352821",
     "chainId" : 56,
+    "chainName":"Binance Smart Chain Mainnet",
+    "rpcUrls": ["https://bsc-dataseed1.binance.org"],
+    "blockExplorerUrls": ["https://bscscan.com"],
+    "currencySymbol" : "BNB",
     "baseNumber" : 1000000000000000000,
     "tokenAddress": "0xfdD0B9c4C6a0De02A97627749dA4C66160761389",
     "maxApprovalAmount" : "115792089237316195423570985008687907853269984665640564039457584007913129639935",

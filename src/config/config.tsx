@@ -8,6 +8,16 @@ export const WORLD_CUP_ADDRESS = configJson.contractAddress;
 export const NUMBER_BASE = configJson.baseNumber;
 
 export const TOKEN_NAME= configJson.tokenName;
+
+export const CHAIN_NAME= configJson.chainName;
+
+export const RPC_URLS= configJson.rpcUrls;
+
+export const CURRENCY_SYMBOL= configJson.currencySymbol;
+
+export const BLOCKS_EXPORT_URLS= configJson.blockExplorerUrls;
+
+
 // address of the token
 export const GOAT_TOKEN_ADDRESS = configJson.tokenAddress;
 
