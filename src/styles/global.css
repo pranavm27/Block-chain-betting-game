@@ -18,6 +18,7 @@ body {
   border-top-right-radius: 50px;
 }
 
+
 .bottom-curve {
   border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;
@@ -69,9 +70,6 @@ a {
   @apply text-blue-700;
 }
 
-a:hover {
-  @apply border-b-2 border-blue-700;
-}
 
 @tailwind components;
 

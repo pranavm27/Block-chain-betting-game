@@ -10,10 +10,10 @@ function Header() {
       <div className="lg:flex md:flex-none flex-wrap flex-row-reverse ">
         <div className="basis-1/4  	">
           <a
-            className="  flex-auto p-2  mt-5  font-bold lg:mt-14 mb-14 "
+            className=" no-underline flex-auto p-2  mt-5  font-bold lg:mt-14 mb-14 "
             style={{
               color: "#fff",
-              backgroundColor: "#00cf00",
+              backgroundColor: "#b4003a",
             }}
             target="_new"
             href={DOCS}
@@ -27,11 +27,11 @@ function Header() {
           >
             <img
               style={{
-                width: "9%",
-                float: "right",
-                marginRight: "24%",
+                width: "6%",
+                marginLeft: "5%",
                 top: "0",
                 marginTop: "1%",
+                display: "inline",
               }}
               className=" "
               src="/assets/images/twitter.png"
@@ -44,6 +44,7 @@ function Header() {
               color: "#fff",
               backgroundColor: "#ea5729",
               width: "15rem",
+              display: "inline",
             }}
             onClick={connect}
           >
