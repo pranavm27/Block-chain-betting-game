@@ -187,8 +187,9 @@ export const MetaMaskProvider = ({ children }: any) => {
 
       const web3 = new Web3(Web3.givenProvider);
       // Get ERC20 Token contract instance
-      console.log(MIN_ABI);
-      let contract = new web3.eth.Contract(MIN_ABI, tokenAddress);
+
+      /* tslint:disable-next-line */
+      let contract = new web3.eth.Contract(MIN_ABI as AbiItem[], tokenAddress);
 
       // call transfer function
       await contract.methods
@@ -297,7 +298,7 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionHasFeesWithdrawn = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
 
       const data = await apiMethods.methods.isFeesWithdrawn().call();
       setIsFeesWithDrawn(data);
@@ -311,7 +312,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionHasBet = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.hasBet(account).call();
       setHasBet(data);
       functionGetTicketsForWallet();
@@ -329,7 +331,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionHasGameEnded = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.hasGameEnded().call();
       setGameEnded(data);
     } catch (error) {
@@ -342,7 +345,8 @@ export const MetaMaskProvider = ({ children }: any) => {
     try {
       const web3 = new Web3(Web3.givenProvider);
       await web3.eth.getAccounts();
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.isSleeping().call();
       setIsSleeping(data);
     } catch (error) {
@@ -356,7 +360,8 @@ export const MetaMaskProvider = ({ children }: any) => {
     try {
       const web3 = new Web3(Web3.givenProvider);
       await web3.eth.getAccounts();
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const teams = await apiMethods.methods.getAllTeams().call();
       const teamsArray = teams.split(",");
       setAllTeams(teamsArray);
@@ -369,7 +374,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionGetTicketPrice = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.getTicketPrice().call();
       setTicketPrice(data);
     } catch (error) {
@@ -381,8 +387,9 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionGetTotalPool = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
+      /* tslint:disable-next-line */
       const apiMethods = new web3.eth.Contract(
-        WORLD_CUP_ABI,
+        WORLD_CUP_ABI as AbiItem[],
         WORLD_CUP_ADDRESS
       );
       let data = await apiMethods.methods.getTotalPool().call();
@@ -399,7 +406,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionGetFees = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.getFees().call();
       setFees(data);
     } catch (error) {
@@ -411,7 +419,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionGetTeamForWallet = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.getTeamForWallet(account).call();
       setTeamForWallet(data);
     } catch (error) {
@@ -423,7 +432,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionGetTeamIdForWallet = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.getTeamIdForWallet(account).call();
       setTeamIdForWallet(data);
     } catch (error) {
@@ -436,7 +446,8 @@ export const MetaMaskProvider = ({ children }: any) => {
     try {
       // web3.eth.handleRevert = true;
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods
         .getWinningsForWallet(account)
         .call();
@@ -451,7 +462,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionGetTicketsForWallet = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.getTicketsForWallet(account).call();
       setTicketsForWallet(data);
     } catch (error) {
@@ -463,7 +475,8 @@ export const MetaMaskProvider = ({ children }: any) => {
   const functionGetAllTicketForTeam = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      /* tslint:disable-next-line */
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       let allTeamsTicketData: any[] = [];
       for (let i = 0; i < allTeams?.length; i++) {
         const data = await apiMethods.methods.getAllTicketsForTeam(i).call();
@@ -533,7 +546,7 @@ export const MetaMaskProvider = ({ children }: any) => {
 
       const web3 = new Web3(Web3.givenProvider);
       // Get ERC20 Token contract instance
-      let contract = new web3.eth.Contract(MIN_ABI, toAddress);
+      let contract = new web3.eth.Contract(MIN_ABI as AbiItem[], toAddress);
 
       // call transfer function
       await contract.methods
@@ -555,7 +568,7 @@ export const MetaMaskProvider = ({ children }: any) => {
     try {
       let fromAddress = account;
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods
         .collectWinnings()
         .send({ from: fromAddress });
@@ -570,7 +583,7 @@ export const MetaMaskProvider = ({ children }: any) => {
     try {
       let fromAddress = account;
       const web3 = new Web3(Web3.givenProvider);
-      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
+      let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI as AbiItem[], WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods
         .hasWalletWithdrawn(fromAddress)
         .call();
