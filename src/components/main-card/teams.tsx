@@ -10,7 +10,9 @@ function Teams() {
         className="
             header-card
             opacity-75
-            p-12
+            pl-12
+            pr-12
+            pt-10
             lg:text-2xl
             font-bold   text-white
             sm:rounded-b md:rounded-none lg:rounded-bl-3xl xl:rounded-bl-3xl
