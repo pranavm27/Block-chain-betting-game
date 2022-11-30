@@ -1,3 +1,4 @@
+import { MAX_TICKET_COUNT, STYLE } from "@/config/config";
 import useMetaMask from "@/hooks/useMeta";
 import React, { useRef, useState } from "react";
 
@@ -25,9 +26,13 @@ function Tickets() {
     hasBet,
   } = useMetaMask();
 
-  const [block , setBlock] = useState(false);
-  const country = allTeams;
-  const noOfTickets = [1, 2, 4, 5, 6, 7, 8, 9, 10];
+  const [block, setBlock] = useState(false);
+  const country = allTeams || [];
+
+  const noOfTickets = Array.from(
+    { length: MAX_TICKET_COUNT },
+    (_, index) => index + 1
+  );
 
   const collectWinnings = async () => {
     if (!hasGameEnded || hasWalletWithdrawn) return;
@@ -41,7 +46,7 @@ function Tickets() {
       alert("No Team Selected ");
       return;
     } else {
-      setBlock(true)
+      setBlock(true);
       const result = await makeSignedTransaction(
         selectedTeam.current,
         noOfTicketsSelected.current
@@ -69,7 +74,10 @@ function Tickets() {
           style={{ minHeight: "43rem" }}
         >
           {isSleeping ? (
-            <label className=" text-4xl" style={{ color: "#fbdf00" }}>
+            <label
+              className=" text-4xl"
+              style={{ color: STYLE.ternaryTextColor }}
+            >
               {" "}
               BETTING IS PAUSED{" "}
             </label>
@@ -88,7 +96,7 @@ function Tickets() {
               <div className="select text-2xl align-middle justify-center mt-14">
                 <p
                   className="text-center align-middle justify-center pt-3 "
-                  style={{ color: "#fbdf00" }}
+                  style={{ color: STYLE.ternaryTextColor }}
                 >
                   {teamForWallet}
                 </p>
@@ -124,7 +132,7 @@ function Tickets() {
                 <div className="select text-2xl align-middle justify-center ">
                   <p
                     className="text-center align-middle justify-center pt-3 "
-                    style={{ color: "#00d500" }}
+                    style={{ color: STYLE.secondaryColor }}
                   >
                     {" "}
                     {ticketsForWallet}
@@ -139,14 +147,19 @@ function Tickets() {
                     disabled={isSleeping || hasGameEnded}
                     name="format"
                     id="format"
-                    style={{ color: "#00c300" }}
+                    style={{ color: STYLE.secondaryTextColor }}
                     onChange={(e) => {
                       noOfTicketsSelected.current = parseInt(e.target.value);
                     }}
                   >
                     {noOfTickets.map((item) => {
                       return (
-                        <option style={{ color: "#00c300" }}>{item}</option>
+                        <option
+                          value={item}
+                          style={{ color: STYLE.secondaryTextColor }}
+                        >
+                          {item}
+                        </option>
                       );
                     })}
                   </select>
@@ -156,8 +169,8 @@ function Tickets() {
                   className="p-2 m-9"
                   disabled={isSleeping || hasGameEnded || block}
                   style={{
-                    color: "#fff",
-                    backgroundColor: "#ea5729",
+                    color: STYLE.primaryTextColor,
+                    backgroundColor: STYLE.secondaryColor,
                     width: "10em",
                     borderRadius: "12px",
                   }}
@@ -182,7 +195,10 @@ function Tickets() {
             "
           style={{ minHeight: "40rem" }}
         >
-          <p className="text-3xl pt-10" style={{ color: "#00d500" }}>
+          <p
+            className="text-3xl pt-10"
+            style={{ color: STYLE.secondaryTextColor }}
+          >
             {" "}
             BETTING HAS ENDED
           </p>{" "}
@@ -199,7 +215,7 @@ function Tickets() {
               <div className="select text-2xl align-middle justify-center ">
                 <p
                   className="text-center align-middle justify-center pt-3 "
-                  style={{ color: "#fbdf00" }}
+                  style={{ color: STYLE.ternaryTextColor }}
                 >
                   {teamForWallet}
                 </p>
@@ -215,7 +231,7 @@ function Tickets() {
                 <div className="select text-2xl align-middle justify-center ">
                   <p
                     className="text-center align-middle justify-center pt-3 "
-                    style={{ color: "#00d500" }}
+                    style={{ color: STYLE.secondaryTextColor }}
                   >
                     {" "}
                     {ticketsForWallet}
@@ -232,7 +248,7 @@ function Tickets() {
               <div className="select text-2xl align-middle justify-center ">
                 <p
                   className="text-center align-middle justify-center pt-3 "
-                  style={{ color: "#fbdf00" }}
+                  style={{ color: STYLE.ternaryTextColor }}
                 >
                   {winningsForWallet}
                 </p>
@@ -242,7 +258,7 @@ function Tickets() {
                 <div className="select text-2xl align-middle justify-center mt-10 ">
                   <p
                     className="text-center align-middle justify-center pt-3 "
-                    style={{ color: "#00d500" }}
+                    style={{ color: STYLE.secondaryTextColor }}
                   >
                     {" Winning Withdrawn!"}
                   </p>
@@ -253,8 +269,8 @@ function Tickets() {
                   className="p-2 m-9"
                   disabled={hasWalletWithdrawn}
                   style={{
-                    color: "#fff",
-                    backgroundColor: "#ea5729",
+                    color: STYLE.primaryTextColor,
+                    backgroundColor: STYLE.secondaryColor,
                     width: "10em",
                     borderRadius: "12px",
                   }}

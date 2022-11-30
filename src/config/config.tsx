@@ -1,5 +1,5 @@
-const configJson = require("./config.json");
-const abiJSON = require("./abi.json");
+import configJson from "../../config/config.json";
+import abiJSON from "../../config/abi.json";
 
 // address of the smart contract
 export const WORLD_CUP_ADDRESS = configJson.contractAddress;
@@ -17,27 +17,37 @@ export const CURRENCY_SYMBOL= configJson.currencySymbol;
 
 export const BLOCKS_EXPORT_URLS= configJson.blockExplorerUrls;
 
+export const PRIMARY_COLOR= configJson.primaryColor;
 
 // address of the token
-export const GOAT_TOKEN_ADDRESS = configJson.tokenAddress;
+export const GOAT_TOKEN_ADDRESS= configJson.tokenAddress;
 
 // DOCS LINK 
-export const DOCS=configJson.docsLink;
+export const DOCS= configJson.docsLink;
 
 // twitter LINK 
-export const TWITTER =configJson.twitterLink;
+export const TWITTER= configJson.twitterLink;
 
-// twitter LINK 
-export const CHAIN_ID =configJson.chainId;
+// chain ID 
+export const CHAIN_ID= configJson.chainId;
 
 // maximum value for approval amount
-export const MAX_APPROVAL_AMOUNT = configJson.maxApprovalAmount;
+export const MAX_APPROVAL_AMOUNT= configJson.maxApprovalAmount;
 
-// decimal valie
-export const DECIMAL = configJson.decimal;
+// decimal value
+export const DECIMAL= configJson.decimal;
 
 // minimized abi for transaction/allowance and approve
-export const MIN_ABI = configJson.minAbi;
+export const MIN_ABI= configJson.minAbi;
 
 // abi of the smart contract
-export const WORLD_CUP_ABI = abiJSON;
+export const WORLD_CUP_ABI= abiJSON;
+
+export const SITE_DETAILS= configJson.site;
+
+export const STYLE= configJson.style;
+
+export const LOGO= configJson.logo;
+
+export const MAX_TICKET_COUNT = configJson.maxTickCount;
+

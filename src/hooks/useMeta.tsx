@@ -64,7 +64,8 @@ export const MetaMaskProvider = ({ children }: any) => {
 
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [allTeams, setAllTeams] = useState([]);
+  const [allTeams, setAllTeams] = useState<string[]>([]);
+  const [fullTeams, setFullTeam] = useState([]);
   const [ticketPrice, setTicketPrice] = useState();
   const [totalPool, setTotalPool] = useState(0);
   const [fees, setFees] = useState(0);
@@ -82,34 +83,24 @@ export const MetaMaskProvider = ({ children }: any) => {
   // Init Loading
   useEffect(() => {
     connect().then(() => {
-      initialFunctionCall();
-      refreshData();
+      // initialFunctionCall();
     });
-  }, []);
-
-  useEffect(() => {
-    initialFunctionCall();
   }, [account]);
+  
+  useEffect(() => {
+    console.log(allTeams)
+    refreshData();
+  }, [allTeams]);
+
   const refreshData = () => {
     setInterval(() => {
+      functionGetAllTicketForTeam();
       functionGetTotalPool();
       functionIsSleeping();
-      functionGetAllTicketForTeam();
       functionHasGameEnded();
-    },  1000); //every minute
+    }, 1000); //every minute
   };
 
-  const handleIsActive = useCallback(() => {
-    setIsActive(active);
-  }, [active]);
-
-  useEffect(() => {
-    handleIsActive();
-  }, [handleIsActive]);
-
-  useEffect(() => {
-    functionGetAllTicketForTeam();
-  }, [allTeams]);
 
   useEffect(() => {
     if (hasBet) {
@@ -122,13 +113,13 @@ export const MetaMaskProvider = ({ children }: any) => {
     }
   }, [hasBet]);
 
-  const initialFunctionCall = () => {
-    console.log("inside initial cal");
+  const initialFunctionCall = async ()  => {
     setIsLoading(false);
-    // functionGetApproval();
+    functionGetApproval();
+    functionGetAllTeams();
+
     functionIsSleeping();
     functionHasGameEnded();
-    functionGetAllTeams();
     functionGetTicketPrice();
     functionGetTotalPool();
     functionGetFees();
@@ -149,28 +140,31 @@ export const MetaMaskProvider = ({ children }: any) => {
         method: "wallet_switchEthereumChain",
         params: [{ chainId: web3.utils.toHex(CHAIN_ID) }],
       });
-      console.log("........", data);
-      initialFunctionCall()
+      initialFunctionCall();
       return data;
     } catch (error) {
-      console.log("2424324...", error);
       if (error.code === 4902) {
         addWallet();
       }
     }
   };
 
-
   const addWallet = async () => {
     try {
       const web3 = new Web3(Web3.givenProvider);
-      const chainData = [{
-        chainId: web3.utils.toHex(CHAIN_ID),
-        chainName: CHAIN_NAME,
-        nativeCurrency: { name: CHAIN_NAME, symbol: CURRENCY_SYMBOL, decimals: DECIMAL },
-        rpcUrls: RPC_URLS,
-        blockExplorerUrls: BLOCKS_EXPORT_URLS,
-    }];
+      const chainData = [
+        {
+          chainId: web3.utils.toHex(CHAIN_ID),
+          chainName: CHAIN_NAME,
+          nativeCurrency: {
+            name: CHAIN_NAME,
+            symbol: CURRENCY_SYMBOL,
+            decimals: DECIMAL,
+          },
+          rpcUrls: RPC_URLS,
+          blockExplorerUrls: BLOCKS_EXPORT_URLS,
+        },
+      ];
 
       const data = await window.ethereum.request({
         method: "wallet_addEthereumChain",
@@ -179,11 +173,10 @@ export const MetaMaskProvider = ({ children }: any) => {
       switchNetWrok();
       return data;
     } catch (error) {
-      console.log(".......", error);
+      console.log( error);
     }
   };
 
-  
   // get approval to send token
   const functionGetApproval = async () => {
     try {
@@ -285,7 +278,7 @@ export const MetaMaskProvider = ({ children }: any) => {
       await activate(injected);
       new Web3(Web3.givenProvider);
     } catch (error) {
-      console.log("Error on connecting: ", error);
+      console.error("Error on connecting: ", error);
     }
   };
 
@@ -294,7 +287,7 @@ export const MetaMaskProvider = ({ children }: any) => {
     try {
       await deactivate();
     } catch (error) {
-      console.log("Error on disconnecting: ", error);
+      console.error("Error on disconnecting: ", error);
     }
   };
 
@@ -318,7 +311,6 @@ export const MetaMaskProvider = ({ children }: any) => {
       const web3 = new Web3(Web3.givenProvider);
       let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.hasBet(account).call();
-      console.log("hasbet..", data);
       setHasBet(data);
       functionGetTicketsForWallet();
       functionGetTeamForWallet();
@@ -356,6 +348,7 @@ export const MetaMaskProvider = ({ children }: any) => {
     }
   };
 
+
   // get All teams
   const functionGetAllTeams = async () => {
     try {
@@ -363,7 +356,8 @@ export const MetaMaskProvider = ({ children }: any) => {
       await web3.eth.getAccounts();
       let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
       const teams = await apiMethods.methods.getAllTeams().call();
-      setAllTeams(teams.split(","));
+      const teamsArray = teams.split(",");
+      setAllTeams(teamsArray);
     } catch (error) {
       console.error(error);
     }
@@ -444,11 +438,9 @@ export const MetaMaskProvider = ({ children }: any) => {
       const data = await apiMethods.methods
         .getWinningsForWallet(account)
         .call();
-      console.log("winnding ffor wallets success", data);
       setWinningsForWallet(data / Math.pow(10, DECIMAL));
     } catch (error: any) {
       console.log(error);
-      console.log("winnding ffor wallets fail");
       setWinningsForWallet(0);
     }
   };
@@ -459,7 +451,6 @@ export const MetaMaskProvider = ({ children }: any) => {
       const web3 = new Web3(Web3.givenProvider);
       let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
       const data = await apiMethods.methods.getTicketsForWallet(account).call();
-      console.log("get tickkets for walllet ", data, account);
       setTicketsForWallet(data);
     } catch (error) {
       console.error(error);
@@ -481,14 +472,14 @@ export const MetaMaskProvider = ({ children }: any) => {
         };
         allTeamsTicketData.push(json);
       }
-      if(allTeamsTicketData.length > 0)
+      if (allTeamsTicketData.length > 0)
         setAllTicketForTeam(allTeamsTicketData);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // function check alowance
+  // function check allowance
   const checkAllowance = async (): Promise<any> => {
     try {
       let tokenAddress = GOAT_TOKEN_ADDRESS;
@@ -531,10 +522,6 @@ export const MetaMaskProvider = ({ children }: any) => {
     try {
       const allowance = await checkAllowance();
 
-      console.log("....allowance", allowance);
-      console.log("....ticket price ", ticketPrice);
-      // console.log('. ...total ', (ticketPrice * NUMBER_BASE))
-
       if (ticketPrice && allowance < ticketPrice) {
         await functionGetApproval();
       }
@@ -547,11 +534,10 @@ export const MetaMaskProvider = ({ children }: any) => {
       let contract = new web3.eth.Contract(MIN_ABI, toAddress);
 
       // call transfer function
-     await contract.methods
+      await contract.methods
         .buyTickets(team, tickets)
         .send({ from: fromAddress })
         .on("transactionHash", function (hash: any) {
-          console.log(hash);
           functionHasBet();
           return true;
         });
@@ -565,7 +551,6 @@ export const MetaMaskProvider = ({ children }: any) => {
   // get winnings  for wallet
   const functionCollectWinnings = async () => {
     try {
-      console.log("in functionCollectWinnings");
       let fromAddress = account;
       const web3 = new Web3(Web3.givenProvider);
       let apiMethods = new web3.eth.Contract(WORLD_CUP_ABI, WORLD_CUP_ADDRESS);
@@ -573,8 +558,6 @@ export const MetaMaskProvider = ({ children }: any) => {
         .collectWinnings()
         .send({ from: fromAddress });
       setHasWalletWithdrawn(true);
-      console.log(data);
-      console.log("in end");
     } catch (error) {
       console.log(error);
     }
@@ -590,7 +573,6 @@ export const MetaMaskProvider = ({ children }: any) => {
         .hasWalletWithdrawn(fromAddress)
         .call();
       // .call({ from: fromAddress });
-      console.log("hass withdrawn ", data);
       setHasWalletWithdrawn(data);
     } catch (error) {
       console.log(error);

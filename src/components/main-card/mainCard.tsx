@@ -3,13 +3,10 @@ import Title from "./title";
 import Teams from "./teams";
 import Tickets from "./tickets";
 
-import useMetaMask from "../../hooks/useMeta";
 
 function Card() {
-  const { allTicketForTeam } = useMetaMask();
   return (
     <>
-    
       <div className="mt-30">
       <div
           className=" md:h-26 lg:h-26
@@ -31,13 +28,10 @@ function Card() {
             <div className="flex-auto ">
               <Title status={true}></Title>
             </div>
-            {/* <div className="flex-auto ">
-              <Title status={false}></Title>
-            </div> */}
           </div>
-          <div className="flex  flex-wrap flex-wrap-reverse ">
+          <div className="flex flex-wrap-reverse ">
             <div className="flex-auto ">
-              <Teams allTeams={allTicketForTeam}></Teams>
+              <Teams></Teams>
             </div>
             <div className="flex-auto ">
               <Tickets></Tickets>

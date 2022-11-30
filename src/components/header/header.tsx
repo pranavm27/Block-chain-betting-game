@@ -1,9 +1,16 @@
-import { NUMBER_BASE, TOKEN_NAME, DOCS, TWITTER } from "@/config/config";
+import {
+  DOCS,
+  NUMBER_BASE,
+  TOKEN_NAME,
+  TWITTER,
+  STYLE,
+  LOGO,
+} from "@/config/config";
 import useMetaMask from "../../hooks/useMeta";
 
 function Header() {
-  const { connect, isActive, account } = useMetaMask();
-  const { ticketPrice, totalPool, fees } = useMetaMask();
+  const { connect, isActive, account, ticketPrice, totalPool, fees } =
+    useMetaMask();
 
   return (
     <>
@@ -12,8 +19,8 @@ function Header() {
           <a
             className=" no-underline flex-auto p-2  mt-5  font-bold lg:mt-14 mb-14 "
             style={{
-              color: "#fff",
-              backgroundColor: "#b4003a",
+              color: STYLE.primaryTextColor,
+              backgroundColor: STYLE.gradientPrimary,
             }}
             target="_new"
             href={DOCS}
@@ -41,8 +48,8 @@ function Header() {
           <button
             className="p-2 font-bold mt-4  truncate "
             style={{
-              color: "#fff",
-              backgroundColor: "#ea5729",
+              color: STYLE.primaryTextColor,
+              backgroundColor: STYLE.secondaryColor,
               width: "15rem",
               display: "inline",
             }}
@@ -70,7 +77,7 @@ function Header() {
               </h5>
               <p
                 className=" text-center   text-4xl font-bold text-gray-400"
-                style={{ color: "#00cf00" }}
+                style={{ color: STYLE.secondaryTextColor }}
               >
                 {ticketPrice / NUMBER_BASE || 0} {TOKEN_NAME}
               </p>
@@ -82,7 +89,7 @@ function Header() {
               </h5>
               <p
                 className=" text-center   text-4xl font-bold text-gray-400"
-                style={{ color: "#fbdf00" }}
+                style={{ color: STYLE.ternaryTextColor }}
               >
                 {totalPool} {TOKEN_NAME}
               </p>
@@ -94,7 +101,7 @@ function Header() {
               </h5>
               <p
                 className=" text-center   text-4xl font-bold text-gray-400"
-                style={{ color: "#00d500" }}
+                style={{ color: STYLE.secondaryTextColor }}
               >
                 {fees} %
               </p>
@@ -102,20 +109,19 @@ function Header() {
           </div>
         </div>
 
-       
-
         <div className=" basis-1/4">
           <div className="flex  flex-wrap m-2">
-            <img
-              className=" hidden md:block flex-auto mt-10"
-              style={{ width: "15%", height: "30%" }}
-              src="/assets/images/logo.png"
-            />
-            <img
-              style={{ width: "30%", height: "30%" }}
-              className=" hidden md:block flex-auto "
-              src="/assets/images/worldcup_logo.png"
-            />
+            {LOGO.map((item) => {
+              return (
+                <>
+                  <img
+                    className=" hidden md:block flex-auto mt-10"
+                    style={{ width: "15%", height: "20%" }}
+                    src={`/assets/images/${item}`}
+                  />
+                </>
+              );
+            })}
           </div>
         </div>
       </div>

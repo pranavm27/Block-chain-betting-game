@@ -1,6 +1,9 @@
+import {SITE_DETAILS} from "../config/config"
+
+
 export const AppConfig = {
-  site_name: 'Betting Game',
-  title: 'World Cup Betting',
-  description: 'Betting game for FIFA 2022 world cup',
-  locale: 'en',
+  site_name: SITE_DETAILS.siteName,
+  title: SITE_DETAILS.title,
+  description: SITE_DETAILS.description,
+  locale: SITE_DETAILS.locale,
 };

@@ -48,8 +48,25 @@
           "stateMutability": "nonpayable",
           "type": "function"
         }
-      ]
-
-
+      ],
+      "style":{
+        "primaryColor" : "#a3a3a3",
+        "secondaryColor": "#ea5729",
+        "gradientPrimary": "#b4003a",
+        "primaryTextColor": "#ffff",
+        "secondaryTextColor": "#00cf00",
+        "ternaryTextColor": "#fbdf00",
+        "backGroundImage": ""
+      },
+    "logo": ["worldcup_logo.png", "logo.png"],
+    "favicon": ["asdf"],
+    "maxTickCount": 10,
+    "refreshInterval" : 600000,
+    "site" : {
+      "siteName":"Betting Game",
+      "title": "World Cup Betting",
+      "description" : "Betting game for FIFA 2022 world cup",
+      "locale": "en"
+    }
 
 }
