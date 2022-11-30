@@ -173,9 +173,10 @@ export const MetaMaskProvider = ({ children }: any) => {
       switchNetWrok();
       return data;
     } catch (error) {
-      console.log( error);
+      console.log(".......", error);
     }
   };
+
 
   // get approval to send token
   const functionGetApproval = async () => {
@@ -282,6 +283,7 @@ export const MetaMaskProvider = ({ children }: any) => {
     }
   };
 
+  
   // Disconnect from Metamask wallet
   const disconnect = async () => {
     try {

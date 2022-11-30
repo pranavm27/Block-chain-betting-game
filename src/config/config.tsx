@@ -17,7 +17,6 @@ export const CURRENCY_SYMBOL= configJson.currencySymbol;
 
 export const BLOCKS_EXPORT_URLS= configJson.blockExplorerUrls;
 
-export const PRIMARY_COLOR= configJson.primaryColor;
 
 // address of the token
 export const GOAT_TOKEN_ADDRESS= configJson.tokenAddress;
