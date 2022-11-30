@@ -3,7 +3,9 @@
 
 ⚡ Built with Next.js, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, Jest, Testing Library, Commitlint, VSCode, Netlify, PostCSS, Tailwind CSS.
 
-<!-- You can check  [Tool-kit](https://took-kit.netlify.app/). -->
+ You can check  [DEMO](https://betting-game.netlify.app/)
+
+![image](https://user-images.githubusercontent.com/6630080/204750650-a54a6429-647b-4dfe-b633-eea685d9183f.png)
 
 ### Features
 
