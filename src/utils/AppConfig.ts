@@ -6,4 +6,5 @@ export const AppConfig = {
   title: SITE_DETAILS.title,
   description: SITE_DETAILS.description,
   locale: SITE_DETAILS.locale,
+  siteStatusActive : SITE_DETAILS.stiteStatusActive,
 };
