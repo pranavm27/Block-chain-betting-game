@@ -116,44 +116,6 @@ function Header() {
         </div>
       </div>
 
-      {/* <div className="flex flex-wrap content-center text-center align-middle "
-              style={{  minWidth: "63rem" }}
-              >
-   
-
-
-
-        <div 
-         className="content-center pt-10 pl-10 pr-10 font-bold text-center align-middle opacity-75 header-card lg:text-2xl top-curve bottom-curve">
-          <div className="">
-            <div className=" md:w-8/12 lg:w-10/12 sm:w-10/12"
-             
-            >
-              <div className="flex-auto">
-                <p
-                  className="font-bold text-center text-gray-400 md:text-3xl lg:text-5xl sm:text-3xl "
-                  style={{ color: STYLE.secondaryTextColor }}
-                >
-                  Congratulations winners!
-                </p>
-              </div>
-              <div className="flex-auto">
-             
-              <p
-                className="font-bold text-center text-gray-400 md:text-4xl lg:text-4xl sm:text-4xl "
-                style={{ color: STYLE.ternaryTextColor }}
-              >
-                Odds on chain will return soon!
-              </p>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-
-
-
     </>
   );
 }
